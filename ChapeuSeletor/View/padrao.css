@@ -1,0 +1,17 @@
+body
+{
+	border: 0px;
+	font-family: arial;
+	font-size: 12px;
+	margin: 0px;
+	
+}
+
+.mestra
+{
+	background-image: url("imagens/fundo.png");
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
