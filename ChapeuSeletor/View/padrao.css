@@ -1,17 +1,65 @@
+@font-face
+{
+	font-family: parryhotter;
+	src: url("fonts/ParryHotter.ttf");
+}
+
+.alternativa
+{
+	font-family: parryhotter;
+	font-size: 35px;
+	text-align: center;
+}
+
 body
 {
 	border: 0px;
 	font-family: arial;
 	font-size: 12px;
 	margin: 0px;
-	
+}
+
+.mapa_cel
+{
+	font-family: parryhotter;
+	height: 100%;
+	left: 0px;
+	position: absolute;
+	top: 0px;
+	transition: 3s all;
+	width: 100%;
 }
 
 .mestra
 {
 	background-image: url("imagens/fundo.png");
+	background-position: "10px 10px"; 
 	height: 100%;
-	overflow: hidden;
 	position: relative;
+	overflow: hidden;
+	transition: 3s all;
 	width: 100%;
+}
+
+.pergunta
+{
+	color: #DD0000;
+	font-family: parryhotter;
+	font-size: 45px;
+	height: 200px;
+	opacity: 1;
+	text-align: center;
+	text-shadow: -1px -1px #000, 1px 1px #000, 0px 0px 3px #000;
+}
+
+.proximo
+{
+	background-image: url("imagens/proximo.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	bottom: 20px;
+	right: 20px;
+	height: 150px;
+	position: absolute;
+	width: 200px;
 }
