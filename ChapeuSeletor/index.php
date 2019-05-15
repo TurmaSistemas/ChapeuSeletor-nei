@@ -1,6 +1,6 @@
 <HTML>
 	<HEAD>
-		<TITLE> Chapéu seletor </TITLE>
+		<TITLE> Chapéu seletor - Harry Potter </TITLE>
 		<LINK rel='stylesheet' href='View/padrao.css' />
 		<SCRIPT type='text/javascript' src='View/script.js'> </SCRIPT>
 	</HEAD>
