@@ -1,3 +1,45 @@
+var pegada = []; //]= Array;
+
+function pegada_add(angulo, direita, conta)
+{
+	var peg = document.createElement("DIV");
+	if(direita)
+		peg.className = "pegada_dir";
+	else
+		peg.className = "pegada_esq";
+		
+	var step = (-conta * 50)
+	var posX = Math.round(-Math.cos(angulo * 3.1416 / 180)) * step + (screen.availWidth / 2); 
+	var posY = Math.round(Math.sin(angulo * 3.1416 / 180)) * step + (screen.availHeight / 2);
+	
+	peg.style.left = posX + "px";
+	peg.style.top = posY + "px";
+	peg.style.transform = "rotate("+(-angulo + 90)+"deg)";
+	peg.setAttribute('data-move','0');
+	
+	peg.id = 'pegada_'+conta;
+	pegada.push(peg);
+	document.getElementById('mapa_cel_sai').appendChild(peg);
+	
+	setTimeout("pegada_add("+angulo+", "+!direita+", "+(conta+1)+")", 200);
+}
+
+function pegada_move(conta, angulo)
+{
+	if(pegada[conta].dataset.move == '1')
+		return;
+	
+	pegada[conta].dataset.move = '1';
+	
+	var posX = Math.round(-Math.cos(angulo * 3.1416 / 180)) * screen.availWidth; 
+	var posY = Math.round(Math.sin(angulo * 3.1416 / 180)) * screen.availHeight;
+
+	var pPosX = parseInt(pegada[conta].style.left);
+	var pPosY = parseInt(pegada[conta].style.top);
+	pegada[conta].style.left = (pPosX + posX) + "px";
+	pegada[conta].style.top = (pPosY + posY) + "px";
+}
+
 function transita(mapa_id, angulo, entrada)
 {
 	//!Move uma célula de mapa para o centro da tela
@@ -65,7 +107,7 @@ function troca_pergunta()
 	if(sai_cel)
 	{
 		sai_cel.id = "mapa_cel_sai";
-		sai_cel.style.opacity = "0";
+		//sai_cel.style.opacity = "0";
 	}
 	
 	//cria a célula que vai entrar
@@ -84,4 +126,6 @@ function troca_pergunta()
 	//movimenta as células
 	setTimeout("transita('mapa_cel_sai', "+angulo+", false)", "100");
 	setTimeout("transita('mapa_cel_entra', "+angulo+", true)", "100");
+	
+	pegada_add(angulo, true, -1);
 }

@@ -41,6 +41,30 @@ body
 	width: 100%;
 }
 
+.pegada_dir
+{
+	background-image: url("imagens/pe_dir.png");
+	background-position: center right;
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 50px;
+	position: absolute;
+	transition: 3s all;
+	width: 45px;
+}
+
+.pegada_esq
+{
+	background-image: url("imagens/pe_esq.png");
+	background-position: center left;
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 50px;
+	position: absolute;
+	transition: 3s all;
+	width: 45px;
+}
+
 .pergunta
 {
 	color: #DD0000;
