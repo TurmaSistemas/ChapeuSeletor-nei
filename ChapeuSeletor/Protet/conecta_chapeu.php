@@ -1,5 +1,5 @@
 <?php
-function conecta_site()
+function conecta_chapeu()
 {
 		$con = new PDO ("mysql:host=localhost; dbname=chapeu_seletor", "root", "root");
 		if(!$con)
