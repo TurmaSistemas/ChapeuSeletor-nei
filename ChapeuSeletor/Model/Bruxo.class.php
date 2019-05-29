@@ -2,7 +2,7 @@
 
 class Bruxo{
 
-    private $id; 
+    	private $id; 
 	private $nome;
 	private $senha;
 	private $apelido;
