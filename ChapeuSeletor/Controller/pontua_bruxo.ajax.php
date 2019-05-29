@@ -1,4 +1,6 @@
 <?php
+
+	//Pendente. Vai ser desenvolvido após a carrega alternativa.
 	$codigo = $_GET['codigo'];
 	
 	/*
@@ -10,14 +12,6 @@
 		
 	require_once(dirname(__FILE__)."/../dal/dao.class.php");
 	$dao = new Dao();
-	
-	
+
 	$alternativa = $dao->carrega_alternativa($codigo);
-	
-	
-	
-	
-	
-	
-	
 ?>
