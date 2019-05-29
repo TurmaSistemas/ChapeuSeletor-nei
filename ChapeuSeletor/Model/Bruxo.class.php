@@ -36,7 +36,7 @@ class Bruxo{
 	
 	
 	
-	public function set_apelido($nome)
+	public function set_apelido($apelido)
 	{
 		$this->apelido = $apelido;
 	}
