@@ -1,7 +1,7 @@
 <?php
 
-{
-	class Pontuacao 
+
+	class Pontuacao{ 
 		
 		private $valor;
 		private $key_bruxo;

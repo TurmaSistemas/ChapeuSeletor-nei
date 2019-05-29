@@ -7,8 +7,8 @@ class Dao
 	public function __construct()
 	{
 		require_once(dirname(__FILE__).
-		"/../../../../protec/conecta_site.php");
-		$this->con = conecta_site();
+		"/../../../../protec/conecta_chapeu.php");
+		$this->con = conecta_chapeu();
 	}
 
 	
