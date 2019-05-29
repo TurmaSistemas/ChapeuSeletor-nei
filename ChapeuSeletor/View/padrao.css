@@ -4,6 +4,24 @@
 	src: url("fonts/ParryHotter.ttf");
 }
 
+@keyframes fade
+{
+	0% 
+	{
+		opacity: 0;
+	}
+
+	30% 
+	{
+		opacity: 1;
+	}
+	
+	100%
+	{
+		opacity: 0;
+	}
+}
+
 .alternativa
 {
 	font-family: parryhotter;
@@ -43,11 +61,15 @@ body
 
 .pegada_dir
 {
+	animation-duration: 2.5s;
+	animation-fill-mode: forwards;
+	animation-name: fade;
 	background-image: url("imagens/pe_dir.png");
 	background-position: center right;
 	background-repeat: no-repeat;
 	background-size: contain;
 	height: 50px;
+	opacity: 0;
 	position: absolute;
 	transition: 3s all;
 	width: 45px;
@@ -55,11 +77,15 @@ body
 
 .pegada_esq
 {
+	animation-duration: 2.5s;
+	animation-fill-mode: forwards;
+	animation-name: fade;
 	background-image: url("imagens/pe_esq.png");
 	background-position: center left;
 	background-repeat: no-repeat;
 	background-size: contain;
 	height: 50px;
+	opacity: 0;
 	position: absolute;
 	transition: 3s all;
 	width: 45px;

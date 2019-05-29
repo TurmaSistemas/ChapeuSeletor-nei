@@ -1,7 +1,15 @@
-var pegada = []; //]= Array;
+var pegada = []; 
+var pegada_to;
 
 function pegada_add(angulo, direita, conta)
 {
+	//!Adiciona uma nova pegada
+	/*!Onde:<br>
+	 * angulo - Angulo em que será criada a pegada <br>
+	 * direita (booleana) - Se a pegada será direita ou esquerda <br>
+	 * conta - Índice da pegada no vetor de pegadas <br>
+	*/
+	
 	var peg = document.createElement("DIV");
 	if(direita)
 		peg.className = "pegada_dir";
@@ -15,29 +23,31 @@ function pegada_add(angulo, direita, conta)
 	peg.style.left = posX + "px";
 	peg.style.top = posY + "px";
 	peg.style.transform = "rotate("+(-angulo + 90)+"deg)";
+	peg.style.opacity = '1.0';
 	peg.setAttribute('data-move','0');
-	
 	peg.id = 'pegada_'+conta;
+	
 	pegada.push(peg);
 	document.getElementById('mapa_cel_sai').appendChild(peg);
 	
-	setTimeout("pegada_add("+angulo+", "+!direita+", "+(conta+1)+")", 200);
+	pegada_to = setTimeout("pegada_add("+angulo+", "+!direita+", "+(conta+1)+")", 200);
 }
 
-function pegada_move(conta, angulo)
+function pegada_para()
 {
-	if(pegada[conta].dataset.move == '1')
-		return;
+	//!Para de gerar pegadas
 	
-	pegada[conta].dataset.move = '1';
-	
-	var posX = Math.round(-Math.cos(angulo * 3.1416 / 180)) * screen.availWidth; 
-	var posY = Math.round(Math.sin(angulo * 3.1416 / 180)) * screen.availHeight;
+	clearTimeout(pegada_to);
+}
 
-	var pPosX = parseInt(pegada[conta].style.left);
-	var pPosY = parseInt(pegada[conta].style.top);
-	pegada[conta].style.left = (pPosX + posX) + "px";
-	pegada[conta].style.top = (pPosY + posY) + "px";
+function pegada_para_chamado(timeout)
+{
+	//!Configura o tempo de atraso para parar de gerar pegadas
+	/*!Onde:<br>
+	 * timeout - Tempo de atraso para parar de gerar pegadas
+	*/
+	
+	setTimeout("pegada_para()",timeout);
 }
 
 function transita(mapa_id, angulo, entrada)
@@ -52,6 +62,8 @@ function transita(mapa_id, angulo, entrada)
 	var mapa = document.getElementById(mapa_id);
 	if(!mapa)
 		return;
+
+	mapa.addEventListener('transitionend', function(){return pegada_para_chamado(700);});
 
 	var posX = Math.round(-Math.cos(angulo * 3.1416 / 180)) * screen.availWidth; 
 	var posY = Math.round(Math.sin(angulo * 3.1416 / 180)) * screen.availHeight;
