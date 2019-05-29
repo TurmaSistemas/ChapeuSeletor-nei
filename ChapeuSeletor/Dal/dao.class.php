@@ -8,7 +8,7 @@ class Dao
 	{
 		require_once(dirname(__FILE__).
 		"/../../../../protec/conecta_chapeu.php");
-		$this->con = conecta_site();
+		$this->con = conecta_chapeu();
 	}
 
 	
