@@ -54,5 +54,19 @@ class Dao
 			return 1;
 		    return 0;
     	}
+	
+	public function carrega_pergunta($id_pergunta = 0) //Verificar se esta correto.
+	{
+        	require_once(dirname(__FILE__)."/../model/pergunta.class.php");
+        
+		$pergunta = new Pergunta($id_pergunta);
 
+		$pergunta_q = $this->con->prepare("SELECT pergunta FROM pergunta WHERE id=?");
+		$pergunta_q->bindParam(1, $id);
+		$pergunta_q->execute();
+        
+   		$pergunta = pergunta_q;
+
+		return $pergunta;
+    	}
 }
