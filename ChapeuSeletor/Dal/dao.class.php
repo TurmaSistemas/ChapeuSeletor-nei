@@ -14,7 +14,7 @@ class Dao
 	
 	public function carrega_casa($id)
 	{
-		require_once(dirname(__FILE__)."/../model/casa.class.php");
+		require_once(dirname(__FILE__)."/../model/Casa.class.php");
 		
 		$home = new Casa($id);
 		
@@ -32,4 +32,27 @@ class Dao
 		
 		return $home;
 	}
+	
+	public function registra_bruxo($bruxo)
+    	{
+		require_once(dirname(__FILE__)."/../model/Bruxo.class.php");
+
+		$id = $bruxo->get_id();
+		$nome = $bruxo->get_nome();
+		$senha = $bruxo->get_senha();
+		$apelido = $bruxo->get_apelido();
+		$celular = $bruxo->get_celular();
+
+		$bruxoNovo = $this->con->prepare("INSERT INTO bruxo VALUES (?, ?, ?, ?, ?)");
+		$bruxoNovo->bindParam(1, $id);
+		$bruxoNovo->bindParam(2, $nome);
+		$bruxoNovo->bindParam(3, $senha);
+		$bruxoNovo->bindParam(4, $apelido);
+		$bruxoNovo->bindParam(5, $celular);
+
+		if($bruxoNovo->execute())
+			return 1;
+		    return 0;
+    	}
+
 }
